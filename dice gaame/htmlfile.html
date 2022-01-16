@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0">
+		
+	<title>Dice Game</title>
+<style>
+	.container {
+		width: 70%;
+		margin: auto;
+		text-align: center;
+	}
+
+	.dice {
+		text-align: center;
+		display: inline-block;
+		margin: 10px;
+	}
+
+	body {
+		background-color: #042f4b;
+		margin: 0;
+	}
+
+	h1 {
+		margin: 30px;
+		font-family: "Lobster", cursive;
+		text-shadow: 5px 0 #232931;
+		font-size: 4.5rem;
+		color: #4ecca3;
+		text-align: center;
+	}
+	h5 {
+		margin: 0px;
+		font-family: "Lobster", cursive;
+		text-shadow: 5px 0 #232931;
+		font-size: 1.5rem;
+		color: #4ecca3;
+		text-align: center;
+	}
+
+	p {
+		font-size: 2rem;
+		color: #4ecca3;
+		font-family: "Indie Flower", cursive;
+	}
+
+	img {
+		width: 100%;
+	}
+
+	.bottom {
+		padding-top: 30px;
+	}
+
+	.butn1 {
+		background: #4ecca3;
+		font-family: "Indie Flower", cursive;
+		border-radius: 7px;
+		color: #ffff;
+		font-size: 30px;
+		padding: 16px 25px 16px 25px;
+		text-decoration: none;
+	}
+	.butn2 {
+		background: #4ecca3;
+		font-family: "Indie Flower", cursive;
+		border-radius: 7px;
+		color: #ffff;
+		font-size: 30px;
+		padding: 16px 25px 16px 25px;
+		text-decoration: none;
+	}
+	.butn3 {
+		background: #4ecca3;
+		font-family: "Indie Flower", cursive;
+		border-radius: 7px;
+		color: #ffff;
+		font-size: 30px;
+		padding: 16px 25px 16px 25px;
+		text-decoration: none;
+	}
+
+	.butn1:hover {
+		background: #232931;
+		text-decoration: none;
+	}
+	.butn2:hover {
+		background: #232931;
+		text-decoration: none;
+	}
+	.butn3:hover {
+		background: #232931;
+		text-decoration: none;
+	}
+</style>
+
+</head>
+
+<body>
+	<div class="container">
+		<h1>Let's Play</h1>
+
+		<div class="dice">
+			<p class="Player1">Player 1</p>
+			<p class="player1">Score</p>
+			<h5 class="s1"></h5>
+			<img class="img1" src="dice6.png">
+		</div>
+
+		<div class="dice">
+			<p class="Player2">Player 2</p>
+			<p class="player1">Score</p>
+			<h5 class="s2"></h5>
+			<img class="img2" src="dice6.png">
+		</div>
+	</div>
+
+	<div class="container bottom">
+		<button type="button" class="butn1"
+			onClick="rollTheDice1()">
+			p1 Roll
+		</button>
+		<button type="button" class="butn2"
+			onClick="rollTheDice2()">
+			P2 Roll
+		</button>
+	</div>
+	<div class="container bottom">
+		<button type="button" class="butn3"
+			onClick="editNames()">
+			Turn
+		</button>
+	</div>
+    <script>
+
+	// Player name
+	var player1 = "Player 1";
+	var player2 = "Player 2";
+	var final   = 0;
+	var sum1 = 0;
+	var sum2 =0;
+	 var flag1 =0;
+         var flag2 =0;
+         var flag3 =1;
+	 
+	// Function to change the player name
+	function editNames() {
+		final   = prompt("Enter the final score");
+		var randomNumber3 = Math.floor(Math.random()*(2-1+1) ) + 1;
+			alert("Player"+randomNumber3+"turn");
+                         if (flag3==0) {
+        		 document.querySelector(".butn3").editNames = null; //button remains disabled
+   			 } else {
+       			 document.querySelector(".butn3").editNames = null;//button is enabled
+  				  } flag=0;
+			}
+	// Function to roll the dice
+	function rollTheDice1() {
+                                  
+			var randomNumber1 = Math.floor(Math.random()*(6-1+1) ) + 1;
+			setTimeout(
+					function()
+					{
+						if(randomNumber1==6) 
+						{alert("you got one more chance");}
+						else
+						{
+							alert("Player 2 Turn");
+						}
+			
+			
+			     }, 1000);
+                      
+			document.querySelector(".img1").setAttribute("src","dice" + randomNumber1 + ".png");
+   					sum1=sum1+randomNumber1;
+				document.querySelector(".s1").innerHTML = sum1;
+					
+					
+			if (sum1>=final) {
+				document.querySelector("h1").innerHTML= (player1 + " WINS!");
+				document.querySelector(".butn1").rollTheDice1 = null;
+				document.querySelector(".butn2").rollTheDice2 = null;
+			} }
+			
+			
+// Function to roll the dice
+	function rollTheDice2() {
+                                   
+				
+			var randomNumber2 = Math.floor(Math.random()*(6-1+1) ) + 1;
+		
+			document.querySelector(".img2").setAttribute("src",
+				"dice" + randomNumber2 + ".png");
+   					sum2=sum2+randomNumber2;
+				document.querySelector(".s2").innerHTML = sum2;
+				
+					
+			if (sum2>=final) {
+				document.querySelector("h1").innerHTML= (player2 + " WINS!");
+				document.querySelector(".butn1").rollTheDice1 = null;
+				document.querySelector(".butn2").rollTheDice2 = null;
+			}
+				setTimeout(
+					function()
+					{
+						if(randomNumber2==6) 
+						{alert("you got one more chance");}
+						else
+						{
+							alert("Player 1 Turn");
+						}
+			
+			
+			     }, 1000);	
+		   }
+     			
+                   
+     
+
+</script>
+
+</body>
+
+    
+</html>
